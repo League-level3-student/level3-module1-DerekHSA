@@ -108,12 +108,14 @@ array=bruh;
 	
 	//11. Complete the size method so that it returns the length of the member array.
 	public int size() {
-		return 0;
+		return array.length;
 	}
 	
 	//12. Complete the clear array so that it sets the member array 
 	//    equal to a new integer array of size 0
 	public void clear() {
+		int[] array2 = new int[0];
+		array=array2;
 	}
 	
 	//13. Run the test again to see if you are finished.

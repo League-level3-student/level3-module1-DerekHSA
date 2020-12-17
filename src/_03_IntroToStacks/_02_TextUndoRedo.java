@@ -1,9 +1,20 @@
 package _03_IntroToStacks;
 
-public class _02_TextUndoRedo {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Stack;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class _02_TextUndoRedo implements KeyListener {
+	public static void main(String[] args) {
+		_02_TextUndoRedo a = new _02_TextUndoRedo();
+	}
 	/* 
 	 * Create a JFrame with a JPanel and a JLabel.
-	 * 
+	 
 	 * Every time a key is pressed, add that character to the JLabel. It should look like a basic text editor.
 	 * 
 	 * Make it so that every time the BACKSPACE key is pressed, the last character is erased from the JLabel.
@@ -13,6 +24,41 @@ public class _02_TextUndoRedo {
 	 * off the Stack and added back to the JLabel.
 	 * 
 	 * */
-	
+	Stack<String> words = new Stack<String>();
+	JFrame frame;
+	JPanel panel;
+	JLabel label;
+	_02_TextUndoRedo(){
+
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel = new JPanel();
+		label = new JLabel();
+		frame.add(panel);
+		frame.setVisible(true);
+		frame.addKeyListener(this);
+	}
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		if(arg0.getKeyCode()!=KeyEvent.VK_BACK_SPACE&&arg0.getKeyCode()!=KeyEvent.VK_F1&&arg0.getKeyCode()!=KeyEvent.VK_SHIFT) {
+		String txt = label.getText();
+		txt += arg0.getKeyChar();
+		panel.remove(label);
+		label.setText(txt);
+		panel.add(label);
+		frame.pack();
+		}
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
