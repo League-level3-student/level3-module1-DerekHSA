@@ -3,6 +3,7 @@ package _03_IntroToStacks;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 import org.junit.Test;
@@ -20,9 +21,23 @@ public class _03_TestMatchingBrackets {
 
 	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS A MATCHING CLOSING BRACKET
 	private boolean doBracketsMatch(String brackets) {
-		
+		Stack<String> strings = new Stack<String>();
 		//1. Use a for loop to iterate through your brackets String 
-
+		for (int i = 0; i < brackets.length(); i++) {
+			if (brackets.substring(i,i+1).equals("{")) {
+				strings.push("{");
+			}else if (brackets.substring(i,i+1).equals("}")) {
+				if(strings.isEmpty()) {
+					return false;
+				}
+				strings.pop();
+			}
+		}
+		if(!strings.isEmpty()) {
+			return false;
+		}else {
+			return true;	
+		}
     			//2.  If the current character is an '{'
 
         			//3.  Push an '{' onto the stack 
@@ -43,7 +58,7 @@ public class _03_TestMatchingBrackets {
 		//10. else (i.e. everything matched correctly)
 
     			//11. return true 
-			return true;
+			
 		
 	}
 
